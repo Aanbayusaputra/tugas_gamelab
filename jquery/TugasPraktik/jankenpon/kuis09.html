@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+           body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .display-4 {
+            font-size: 2.5rem;
+        }
+
+        .fw-bold {
+            font-weight: bold;
+        }
+
+        .fw-light {
+            font-weight: lighter;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            flex: 1;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-success {
+            background-color: #0d18f1;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .list-group {
+            list-style: none;
+            padding: 0;
+        }
+
+        .list-group-item {
+            border: none;
+            border-top: 1px solid #dee2e6;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .list-group-item button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .form-check-input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        h1, h2{
+            text-align: center;
+        }
+
+        .list-group-item.new-task {
+            animation: fade-in 0.5s ease-in-out;
+        }
+        
+    </style>
+</head>
+<body>
+    <canvas id="canvas-background"></canvas>
+    <div id="container">
+        <div class="card text-center">
+            <div class="card-body">
+                <h1 class="display-4 fw-bold">Todo List</h1>
+                <h2 class="fw-light">Silahkan buat list Harian Kamu!</h2>
+                <form id="todo-form">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="input-user" autofocus autocomplete="off" placeholder="isi list disini">
+                        <button class="btn btn-success" type="submit">Tambahkan</button>
+                    </div>
+                </form>
+                <ul class="list-group text-dark" id="list-group">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="kuis09.js"></script>
+   
+</body>
+</html>

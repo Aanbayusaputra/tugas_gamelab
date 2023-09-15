@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formulir Pendaftaran</title>
+  </head>
+  <body>
+   
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+           
+        }
+        .wrap{
+            width: 800px ;
+            margin: 10px auto;
+            padding: 1px;
+        }
+        video, canvas, audio{
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+        }
+
+    </style>
+    <h1 align="center"><U>FORMULIR PENDAFTARAN</U></h1>
+    <br>
+
+<!-- Source Code Audio -->
+    <audio controls>
+        <source src="https://samplelib.com/lib/preview/mp3/sample-12s.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+<!-- Source Code Video -->
+    <video controls width="400" height="200" style="display: block; margin: 20px auto; max-width: 100%;">
+        <source src="https://samplelib.com/lib/preview/mp4/sample-15s.mp4" type="video/mp4">
+    </video>
+
+<!-- Source Code Canvas -->
+    <canvas id="myCanvas" width="400" height="200"></canvas>
+    <script>
+    const canvas = document.getElementById('myCanvas');
+    const context = canvas.getContext('2d');
+    
+    let textX = canvas.width / 2;
+    const textY = canvas.height / 2;
+    
+    function draw() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Mengatur gradien sebagai latar belakang
+        const gradient = context.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(1, 'blue');
+        gradient.addColorStop(0, '#e74c3c');
+        context.fillStyle = gradient;
+        context.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Menambahkan bayangan pada tulisan
+        context.font = '50px Text New Roman';
+        context.fillStyle = 'black';
+        context.shadowColor = 'rgba(0, 0, 0, 0.5)';
+        context.shadowBlur = 10;
+        context.textAlign = 'center';
+        context.strokeText('Educa Studio', textX, textY);
+        
+        // Menggerakkan tulisan
+        textX += 2;
+        if (textX > canvas.width + 100) {
+        textX = -100;
+        }
+        
+        requestAnimationFrame(draw);
+    }
+    
+    draw();
+    </script>
+<!-- Akhir Source Code Canvas -->
+
+    
+   <div class="wrap" style=" background-color: white;">
+        <form>
+            <table width="750">
+                <h3 style="background-color: grey;" align="center">Informasi Personal</h3>
+                <tr>
+                    <td>No Pendaftaran</td>
+                    <td><input type="text" name=""></td>
+                </tr>
+                <tr>
+                    <td>Nama</td>
+                    <td><input type="text" name=""></td>
+
+                </tr>
+                <tr>
+                    <td>Tempat, Tanggal Lahir</td>
+                    <td><input type="text" name="">
+                        <input type="date" name=""></td>
+
+                </tr>
+                <tr>
+                    <td>Alamat</td>
+                    <td><div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label"></label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                      </div><td>
+
+                </tr>
+                <tr>
+                    <td>Agama</td>
+                    <td><select class="form-select" aria-label="Default select example">
+                        <option selected>Pilih</option>
+                        <option>Islam</option>
+                        <option>Kristen</option>
+                        <option>Katolik</option>
+                        <option>Hindu</option>
+                        <option>Budha</option>
+                    </select></td>
+                </tr>
+                
+                <tr>
+                    <td>Jenis Kelamin</td>
+                    <td><div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                         Laki-laki
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                          Perempuan
+                        </label>
+                      </div></td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td><select placeholder="name@example.com">
+                        <option selected>Pilih</option>
+                        <option>Belum Menikah</option>
+                        <option>Menikah</option>
+                    </select></td>
+                </tr>
+
+                <tr>
+                    <td>Kewarganegaraan</td>
+                    <td><select>
+                        <option>WNI</option>
+                        <option>WNA</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>Pekerjaan</td>
+                    <td><input type="text" name=""></td>
+
+                </tr>
+                <tr>
+                    <td>Kelurahaan</td>
+                    <td><input type="text" name=""></td>
+
+                </tr>
+                <tr>
+                    <td>Kecamatan</td>
+                    <td><input type="text" name=""></td>
+
+                </tr>
+                <tr>
+                    <td>Kabupaten/Kota</td>
+                    <td><input type="text" name=""></td>
+                </tr>
+                <tr>
+                    <td>Provinsi</td>
+                    <td>
+                        <select class="form-control m-bootstrap-select m_selectpicker" tabindex="-98" name="regional_code" required="">
+                            <option selected>Pilih Provinsi</option>
+                            <option value="11">
+                                ACEH
+                            </option>
+                            <option value="12">
+                                SUMATERA UTARA
+                            </option>
+                            <option value="13">
+                                SUMATERA BARAT
+                            </option>
+                            <option value="14">
+                                R I A U
+                            </option>
+                            <option value="15">
+                                J A M B I
+                            </option>
+                            <option value="16">
+                                SUMATERA SELATAN
+                            </option>
+                            <option value="17">
+                                BENGKULU
+                            </option>
+                            <option value="18">
+                                LAMPUNG
+                            </option>
+                            <option value="19">
+                                KEPULAUAN BANGKA BELITUNG
+                            </option>
+                            <option value="21">
+                                KEPULAUAN RIAU
+                            </option>
+                            <option value="31">
+                                DKI JAKARTA
+                            </option>
+                            <option value="32">
+                                JAWA BARAT
+                            </option>
+                            <option value="33">
+                                JAWA TENGAH
+                            </option>
+                            <option value="34">
+                                DI YOGYAKARTA
+                            </option>
+                            <option value="35">
+                                JAWA TIMUR
+                            </option>
+                            <option value="36">
+                                B A N T E N
+                            </option>
+                            <option value="51">
+                                BALI
+                            </option>
+                            <option value="52">
+                                NUSA TENGGARA BARAT
+                            </option>
+                            <option value="53">
+                                NUSA TENGGARA TIMUR
+                            </option>
+                            <option value="61">
+                                KALIMANTAN BARAT
+                            </option>
+                            <option value="62">
+                                KALIMANTAN TENGAH
+                            </option>
+                            <option value="63">
+                                KALIMANTAN SELATAN
+                            </option>
+                            <option value="64">
+                                KALIMANTAN TIMUR
+                            </option>
+                            <option value="71">
+                                SULAWESI UTARA
+                            </option>
+                            <option value="73">
+                                SULAWESI SELATAN
+                            </option>
+                            <option value="74">
+                                SULAWESI TENGGARA
+                            </option>
+                            <option value="75">
+                                GORONTALO
+                            </option>
+                            <option value="76">
+                                SULAWESI BARAT
+                            </option>
+                            <option value="81">
+                                MALUKU
+                            </option>
+                            <option value="82">
+                                MALUKU UTARA
+                            </option>
+                            <option value="94">
+                                PAPUA
+                            </option>
+                            <option value="91">
+                                PAPUA BARAT
+                            </option>
+                            <option value="72">
+                                SULAWESI TENGAH
+                            </option>
+                            <option value="65">
+                                KALIMANTAN UTARA
+                            </option>
+                        </select>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>No Telpon</td>
+                    <td><input type="text" name=""></td>
+
+                </tr>
+            </table>
+            <table width="750">
+                <h3 style="background-color: grey;" align="center">Informasi Sekolah</h3>
+                <tr>
+                    <td>Nama Sekolah</td>
+                    <td><input type="text" name=""></td>
+                </tr>
+                <tr>
+                    <td>Asal Sekolah</td>
+                    <td><input type="text" name=""></td>
+                </tr>
+                <tr>
+                    <td>Jurusan</td>
+                    <td><select>
+                        <option selected>Pilih Juruan</option>
+                        <option>IPA</option>
+                        <option>IPS</option>
+                        <option>Bahasa</option>
+                        <option>Jaringan Komputer</option>
+                    </select></td>
+                </tr>
+
+                <tr>
+                    <td>Tahun Lulus</td>
+                    <td><select>
+                        <option>2023</option>
+                        <option>2022</option>
+                        <option>2021</option>
+                        <option>2020</option>
+                    </select></td>
+                </tr>           
+            </table>
+            <br>
+            <div style="display: flex; justify-content: margin-top: 20px;">
+                <button type="submit" style="margin-right: 10px;">Simpan</button>
+                <button type="button">Batal</button>
+            </div>
+        </form>
+
+   </div>
+  </body>
+</html>

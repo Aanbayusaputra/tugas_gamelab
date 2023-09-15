@@ -1,0 +1,111 @@
+<!-- <canvas id="myCanvas" width="300" height="200"> 
+    </canvas> 
+    <script> 
+     
+    var canvas = document.getElementById("myCanvas"); 
+    var jeda=50; 
+     
+    class Lingkaran 
+    { 
+     constructor(x,y,rot) 
+     { 
+      this.x=x; 
+      this.y=y; 
+      this.rot=rot; 
+      this.vec=0; 
+      this.a=-10+20*Math.random(); 
+      this.r=50+200*Math.random(); 
+      this.lineWidth=Math.floor(2+150.0*Math.random()); 
+      if(0.5*this.lineWidth>this.r)this.lineWidth=this.r; 
+      this.panjang=Math.floor(10+260.0*Math.random()); 
+      this.panjango=this.panjang; 
+      this.jeda=jeda; 
+     } 
+    
+     move() 
+     { 
+      this.vec+=this.a; 
+      var bts=1; 
+      if(this.vec<-bts)this.vec=-bts; 
+      if(this.vec>bts)this.vec=bts; 
+      if(this.panjango>this.panjang)this.panjango--; 
+      if(this.panjango<this.panjang)this.panjango++; 
+      this.rot+=this.vec; 
+      this.jeda--; 
+      if(this.jeda<=0)this.jeda=jeda+Math.floor(100.0*Math.random()); 
+      if(this.jeda==1){ 
+       this.a=-1+2.0*Math.random(); 
+       this.panjang=Math.floor(5+155.0*Math.random()); 
+      } 
+     } 
+    } 
+     
+    circle=[]; 
+     
+    for(i=0;i<10;i++)circle[i]=new Lingkaran(0.5*canvas.width,0.5*canvas.height,-180+360.0*Math.random()); 
+     
+    function Menggambar() 
+    { 
+     var ctx = canvas.getContext("2d"); 
+     ctx.globalAlpha=1.0; 
+     ctx.fillStyle = "#01579b"; 
+     ctx.fillRect(0,0,canvas.width,canvas.height); 
+    
+     ctx.strokeStyle = "#03a9f4"; 
+     ctx.lineWidth=10; 
+     ctx.beginPath(); 
+     ctx.arc(0.5*canvas.width,0.5*canvas.height,15,0,2*Math.PI); 
+     ctx.stroke(); 
+     ctx.closePath(); 
+    
+     ctx.lineWidth=4; 
+     ctx.beginPath(); 
+     ctx.arc(0.5*canvas.width,0.5*canvas.height,200,0,2*Math.PI); 
+     ctx.stroke(); 
+     ctx.closePath(); 
+    
+     ctx.lineWidth=4; 
+     ctx.beginPath(); 
+     ctx.arc(0.5*canvas.width,0.5*canvas.height,300,0,2*Math.PI); 
+     ctx.stroke(); 
+     ctx.closePath(); 
+     
+     for(i=0;i<circle.length;i++){ 
+      circle[i].move(); 
+    
+      ctx.save(); 
+      ctx.translate(circle[i].x,circle[i].y); 
+      ctx.rotate(circle[i].rot* Math.PI / 180); 
+      ctx.strokeStyle = "#01DCFC"; 
+      ctx.globalAlpha=0.8; 
+      ctx.lineWidth=circle[i].lineWidth; 
+      ctx.beginPath(); 
+      ctx.arc(0,0,circle[i].r,0,circle[i].panjango*Math.PI/180); 
+      ctx.stroke(); 
+      ctx.closePath(); 
+      ctx.restore(); 
+     } 
+     window.requestAnimationFrame(Menggambar); 
+    } 
+     
+    Menggambar(); 
+    </script>  -->
+    
+    <!-- <canvas  id="myCanvas" width="300" height="200" style="border:1px solid #000000;">
+    </canvas>
+    <script>
+         var c=document.getElementById("myCanvas");
+         var ctx=c.getContext("2d");
+         ctx.moveTo(0,100);
+         ctx.lineTo(300,100);
+         ctx.stroke();
+
+        // Create gradient
+        var grd=ctx.createLinearGradient(0,0,250,0);
+        grd.addColorStop(0,"orange");
+        grd.addColorStop(1,"yellow");
+
+        // Fill with gradient
+        ctx.fillStyle=grd;
+        ctx.fillRect(10,10,280,180);
+    </script> -->

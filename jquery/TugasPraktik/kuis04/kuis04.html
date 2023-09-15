@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembuat Segitiga</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url("https://media4.giphy.com/media/EkaXLJBzkkenS/giphy.gif?cid=ecf05e47m72z7z0ur0lykinxpojbvineiqyj3kupusxdh5d3&ep=v1_gifs_related&rid=giphy.gif&ct=g");
+            background-repeat: no-repeat; 
+            background-size: cover;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        #triangle-container {
+            background-color: rgba(255, 255, 255, 0.7); 
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 80%;
+            max-width: 400px;
+        }
+        h1 {
+            margin-top: 0;
+        }
+        #triangleForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        label, select {
+            margin-bottom: 10px;
+        }
+        pre {
+            font-family: monospace;
+            white-space: pre;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="triangle-container">
+            <h1>Pembuat Segitiga</h1>
+            <form id="triangleForm">
+                <label for="height">Tinggi Segitiga: </label>
+                <input type="number" id="height" name="height" min="1" value="5">
+                <label for="type">Tipe Segitiga: </label>
+                <select id="type" name="type">
+                    <option value="sama-sisi">Sama Sisi</option>
+                    <option value="tumpul">Tumpul</option>
+                    <option value="lancip">Lancip</option>
+                    <option value="upside-left">Upside Left</option>
+                    <option value="upside-right">Upside Right</option>
+                    <option value="downside-right">Downside Right</option>
+                    <option value="downside-left">Downside Left</option>
+                </select>
+                <br>
+                <input type="submit" value="Buat Segitiga">
+            </form>
+            <pre id="triangle"></pre>
+        </div>
+    </div>
+    <script src="kuis04.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Pendaftaran Siswa Baru</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+  form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+  <form action="#" method="POST">
+    <h2>Form Pendaftaran Siswa Baru</h2>
+    <label for="nama">Nama Lengkap:</label>
+    <input type="text" id="nama" name="nama" required>
+    
+    <label for="tempat_lahir">Tempat Lahir:</label>
+    <input type="text" id="tempat_lahir" name="tempat_lahir" required>
+    
+    <label for="tanggal_lahir">Tanggal Lahir:</label>
+    <input type="date" id="tanggal_lahir" name="tanggal_lahir" required>
+    
+    <label for="jenis_kelamin">Jenis Kelamin:</label>
+    <select id="jenis_kelamin" name="jenis_kelamin">
+      <option value="laki-laki">Laki-laki</option>
+      <option value="perempuan">Perempuan</option>
+    </select>
+    
+    <label for="alamat">Alamat:</label>
+    <input type="text" id="alamat" name="alamat" required>
+    
+    <label for="no_hp">No HP:</label>
+    <input type="tel" id="no_hp" name="no_hp" required>
+    
+    <label for="kota">Pilih Kota:</label>
+    <select id="kota" name="kota">
+      <option value="jakarta">Jakarta</option>
+      <option value="surabaya">Surabaya</option>
+      <option value="bandung">Bandung</option>
+      
+    </select>
+    
+    <!-- <label for="foto">Foto:</label>
+    <input type="file" id="foto" name="foto" accept="image/*" required> -->
+    
+    <button type="submit">Simpan</button>
+    <button type="button" onclick="cancelForm()">Batal</button>
+  </form>
+  <br>
+  <video controls>
+    <source src="sample.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/-zfjrmiTJ7U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+  <script>
+    function cancelForm() {
+      // Implement any desired behavior when "Batal" button is clicked
+      alert("Form dibatalkan");
+    }
+  </script>
+</body>
+</html>

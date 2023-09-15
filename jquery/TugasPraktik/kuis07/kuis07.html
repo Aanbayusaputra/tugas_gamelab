@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Events</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px;
+            padding: 20px;
+            background-color: orangered;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-text {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .submit-button, .click-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .submit-button:hover, .click-button:hover {
+            background-color: #0056b3;
+        }
+
+        .mouse-div {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+        }
+
+        .mouse-div:hover {
+            background-color: #007bff;
+        }
+
+        .click-button {
+            background-color: #0b67df;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+        }
+
+        .click-button:hover {
+            background-color: #edf501;
+        }
+
+        .keyboard-message {
+            margin-top: 20px;
+            color: #333;
+            text-align: center;
+            padding: 10px 20px;
+        }
+
+        .message {
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>jQuery Events</h1>
+        
+        <!-- Form Event -->
+        <form id="myForm" class="form">
+            <label for="name" class="label">Name:</label>
+            <input type="text" id="name" name="name" class="input-text">
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+
+        <!-- Mouse Event -->
+        <div id="mouseDiv" class="mouse-div">
+            Mouse Events
+        </div>
+
+        <!-- Button Event -->
+        <button id="btn-click" class="click-button">Klik Saya!</button>
+
+        <!-- Input Event -->
+        <input type="text" id="input-text" class="input-text" placeholder="Type something...">
+        <p id="input-message" class="message">Input Event akan ditampilkan disini.</p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="kuis07.js"></script>
+</body>
+</html>

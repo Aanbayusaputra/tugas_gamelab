@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar DOM Javascript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .paragraf {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: white;
+        }
+        .button-container {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="paragraf">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus laudantium quo ad consequuntur iste officiis doloribus debitis, itaque, hic similique illo quae consectetur omnis quidem. Dignissimos omnis porro iusto blanditiis.</div>
+    <div class="paragraf">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse architecto quaerat recusandae sequi tempora eaque unde ratione repellendus. Similique necessitatibus qui sed esse cum possimus obcaecati veniam vero accusantium deserunt.</div>
+    <div class="paragraf">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus illo natus accusamus eum ratione, mollitia iste, dolor deserunt pariatur dolore sequi. Adipisci hic vero odio esse distinctio doloremque, voluptatibus accusamus!</div>
+    
+    <div class="button-container">
+        <button id="redButton">Merah</button>
+        <button id="greenButton">Hijau</button>
+        <button id="blueButton">Biru</button>
+        <button id="resetButton">Reset</button>
+    </div>
+
+    <script>
+        var paragraphs = document.querySelectorAll(".paragraf");
+        var redButton = document.getElementById("redButton");
+        var greenButton = document.getElementById("greenButton");
+        var blueButton = document.getElementById("blueButton");
+        var resetButton = document.getElementById("resetButton");
+
+        var intervalId;
+        var originalColors = [];
+
+        paragraphs.forEach(function(paragraph) {
+            originalColors.push(paragraph.style.backgroundColor);
+        });
+
+        function changeColors(color) {
+            paragraphs.forEach(function(paragraph) {
+                paragraph.style.backgroundColor = color;
+            });
+        }
+
+        redButton.addEventListener("click", function() {
+            changeColors("red");
+        });
+
+        greenButton.addEventListener("click", function() {
+            changeColors("green");
+        });
+
+        blueButton.addEventListener("click", function() {
+            changeColors("blue");
+        });
+
+        resetButton.addEventListener("click", function() {
+            paragraphs.forEach(function(paragraph, index) {
+                paragraph.style.backgroundColor = originalColors[index];
+            });
+            clearInterval(intervalId);
+            intervalId = setInterval(function() {
+                var randomColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+                changeColors(randomColor);
+            }, 1000);
+        });
+
+        intervalId = setInterval(function() {
+            var randomColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+            changeColors(randomColor);
+        }, 1000);
+
+        setTimeout(function() {
+            clearInterval(intervalId);
+            changeColors("white");
+        }, 10000);
+    </script>
+</body>
+</html>

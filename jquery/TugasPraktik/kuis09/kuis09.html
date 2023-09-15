@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis 09 - To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+#todo-app {
+    width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#task {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px; 
+}
+
+#add-task {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; 
+}
+
+#add-task:hover {
+    background-color: #0056b3;
+}
+
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.delete-task,
+.complete-task {
+    background-color: blue;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s; 
+}
+
+.delete-task:hover,
+.complete-task:hover {
+    background-color:blue;
+}
+
+
+.complete {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.delete-task {
+    margin-left: auto; 
+}
+
+
+</style>
+
+    <h1>To-Do List</h1>
+    <div id="todo-app">
+        <input type="text" id="task" placeholder="Tambahkan tugas...">
+        <button id="add-task">Tambah</button>
+        <ul id="task-list"></ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="kuis09.js"></script>
+</body>
+</html>

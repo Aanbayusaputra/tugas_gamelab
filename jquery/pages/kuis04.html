@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segitiga Bintang</title>
+    <script src="kuis04.js"></script>
+    <style>
+    body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-image: url("https://media4.giphy.com/media/EkaXLJBzkkenS/giphy.gif?cid=ecf05e47m72z7z0ur0lykinxpojbvineiqyj3kupusxdh5d3&ep=v1_gifs_related&rid=giphy.gif&ct=g");
+    background-repeat: no-repeat; 
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    
+}
+
+h1 {
+    color: #f2f5e9;
+    margin-top: 20px;
+}
+
+form {
+    margin: 20px auto;
+    width: 300px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form label,
+form input[type="number"],
+form button {
+    display: block;
+    margin-bottom: 15px;
+}
+
+form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+pre {
+    font-family: monospace;
+    white-space: pre-wrap;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Segitiga Bintang</h1>
+    <form id="starForm">
+        <label for="numStars">Jumlah Bintang:</label>
+        <input type="number" id="numStars" min="1" value="5">
+        <button type="submit">Buat Pola</button>
+    </form>
+    <pre id="output"></pre>
+</body>
+</html>

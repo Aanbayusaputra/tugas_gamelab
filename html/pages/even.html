@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Mouse JavaScript</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 60%;
+    margin: 20px auto;
+    background-color: white;
+  }
+  table, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+
+  }
+
+   th {
+    border: 1px solid black;
+    padding: 8px;
+    text-align:center;
+  }
+  img {
+    width: 100px;
+    cursor: pointer;
+    margin: 10px;
+  }
+</style>
+</head>
+<body>
+
+<h2>Klik gambar dibawah ini untuk menampilkan keterangan:</h2>
+
+<img src="https://i.pinimg.com/736x/ab/8b/5e/ab8b5ea6637ebd8e5755c838d952b8c1.jpg" alt="Gambar 1" id="gambar1">
+<img src="https://logovectorseek.com/wp-content/uploads/2019/10/bootstrap-logo-vector.png" alt="Gambar 2" id="gambar2">
+<img src="https://logos-world.net/wp-content/uploads/2023/02/JavaScript-Symbol.png" alt="Gambar 3" id="gambar3">
+
+<table>
+  <tr>
+    <th>Nama</th>
+    <th>Keterangan</th>
+  </tr>
+  <tr id="row">
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+<script>
+const gambar1 = document.getElementById("gambar1");
+const gambar2 = document.getElementById("gambar2");
+const gambar3 = document.getElementById("gambar3");
+const row = document.getElementById("row");
+
+gambar1.addEventListener("click", function() {
+  row.cells[0].textContent = "Laravel";
+  row.cells[1].textContent = "Laravel merupakan framework PHP yang open-source dan berisi banyak modul dasar untuk mengoptimalkan kinerja PHP dalam pengembangan aplikasi web, apalagi PHP adalah bahasa pemrograman yang dinamis dan Laravel disini bisa bertindak untuk membuat web development lebih cepat, lebih aman, dan lebih simpel.";
+});
+
+gambar2.addEventListener("click", function() {
+  row.cells[0].textContent = "Bootstrap";
+  row.cells[1].textContent = "Bootstrap adalah salah satu framework CSS yang berfokus pada pengembangan front-end website. Di dalamnya mengandung HTML, CSS, dan JavaScript untuk membuat tampilan website yang modern, responsif, dan mobile-friendly. Project open source ini bisa Anda pakai secara gratis dengan mengunduhnya dari GitHub.";
+});
+
+gambar3.addEventListener("click", function() {
+  row.cells[0].textContent = "JavaScript";
+  row.cells[1].textContent = "JavaScript adalah bahasa pemrograman yang digunakan developer untuk membuat halaman web yang interaktif. Dari menyegarkan umpan media sosial hingga menampilkan animasi dan peta interaktif, fungsi JavaScript dapat meningkatkan pengalaman pengguna situs web.";
+});
+</script>
+
+</body>
+</html>

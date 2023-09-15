@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<style>
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-image: url("https://media1.giphy.com/media/3o85xzkvl1siB2rHSo/giphy.gif?cid=ecf05e472w44q2sgdhog9jybjod9a51j0kue1i8eam9qwzhq&ep=v1_gifs_search&rid=giphy.gif&ct=g");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+nav {
+    overflow: hidden;
+    width: 100%;
+    background: linear-gradient(to right, #d70909, #c7ecdc);
+    position: fixed;
+    top: 0;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+}
+
+nav .logo {
+    font-size: 1.rem;
+    width: 30%;
+    left: -35px;
+    position: relative;
+    top: -18px;
+}
+
+nav .logo img {
+    padding-top: 20px;
+    width: 60px;
+}
+
+nav li {
+    display: inline;
+}
+
+nav a {
+    text-decoration: none;
+    color: rgb(78, 71, 71);
+    font-family: Arial;
+    padding: 0px 10px;
+    font-weight: bold;
+    transition: 0.15s;
+}
+
+nav a:hover {
+    color: rgb(14, 131, 233);
+}
+nav a:active {
+    color: rgb(72, 233, 14);
+}
+
+#nav-button {
+    display: none;
+}
+
+label {
+    display: none;    
+}
+
+.container {
+            max-width: 960px;
+            margin: 80px auto 20px; 
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: white;
+        }
+
+        .video-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .video-item {
+            border: 1px solid #ddd;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .video-item img {
+            width: 100%;
+            height: 200px;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .rating .stars {
+            color: orange;
+        }
+
+        .rating-value {
+            margin-left: 5px;
+            font-weight: bold;
+        }
+
+        .logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    padding-top: 20px;
+    width: 60px;
+}
+
+        .logo-text {
+        margin-left: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #4cec17;
+        }
+
+
+</style>
+
+    <title>Navbar</title>
+</head>
+<body>
+    <nav>
+
+        <input type="checkbox" name="" id="nav-button">
+        <label for="nav-button">&#9776</label>
+
+        <div class="logo">
+            <img src="https://media0.giphy.com/media/5nvK9hUOcK3KAvkMgH/giphy.gif?cid=ecf05e47a68y11uiz4usrco3cmm75fwzyn7hzdtstb6ji1e6&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="">
+            <span class="logo-text">Filmku</span>
+        </div>
+        
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Dashboard</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="container">
+        <h2>Daftar Film</h2>
+        <div class="video-list">
+            <div class="video-item">
+                <img src="https://assets-a1.kompasiana.com/items/album/2020/01/27/5de4936b0465f-5e2f066f097f3615f12b7d02.jpg" alt="Film 2">
+                <h3>Time Is The Enemy</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore a neque debitis doloremque velit est sit iusto iure asperiores corrupti, cum soluta, nemo assumenda dicta mollitia voluptatibus corporis nam. Itaque!</p>
+                <div class="rating">
+                    <span class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </span>
+                    <span class="rating-value">4.0</span>
+                </div>
+            </div>
+            <div class="video-item">
+                <img src="https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2022/08/30/3992936870.jpeg" alt="Film 2">
+                <h3>One Piece Red</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem repellat aspernatur sint. Tempora sed fuga quibusdam harum minus ratione recusandae voluptatum quia ipsam, non beatae sunt, eligendi facilis obcaecati quam.</p>
+                <div class="rating">
+                    <span class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </span>
+                    <span class="rating-value">5.0</span>
+                </div>
+            </div>
+            <div class="video-item">
+                <img src="https://img.okezone.com/okz/500/library/images/2021/02/24/ulbdj35qada0ro35m5wj_14354.jpg" alt="Film 2">
+                <h3>Mars</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora consequatur vitae, hic molestiae repellendus, autem architecto distinctio dignissimos iusto delectus corrupti, libero nostrum. Consequatur doloribus laudantium voluptas reiciendis illum illo.</p>
+                <div class="rating">
+                    <span class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </span>
+                    <span class="rating-value">5.0</span>
+                </div>
+            </div>
+            <div class="video-item">
+                <img src="https://i.ytimg.com/vi/bF0NTHasDgI/maxresdefault.jpg" alt="Film 2">
+                <h3>Jempatan Pensil</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, expedita vitae? Nobis expedita enim, officia illo vel, delectus itaque libero mollitia fuga explicabo natus. Natus libero nihil tenetur saepe dolore!</p>
+                <div class="rating">
+                    <span class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </span>
+                    <span class="rating-value">5.0</span>
+                </div>
+            </div>
+            <div class="video-item">
+                <img src="https://rencanamu.id/assets/file_uploaded/blog/1556968706-laskar-pel.jpg" alt="Film 2">
+                <h3>Laskar Pelangi</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis eligendi autem quasi hic eos laudantium quam voluptate optio! Rerum incidunt sequi blanditiis itaque consequuntur ullam vero nihil ab optio qui?</p>
+                <div class="rating">
+                    <span class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </span>
+                    <span class="rating-value">5.0</span>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <img src="https://assets.kompasiana.com/items/album/2022/12/08/maxresdefault-63916895200582195c301af5.jpg?t=o&v=400" alt="Film 2">
+                <h3>Jo, Sahabat Sejati</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis eligendi autem quasi hic eos laudantium quam voluptate optio! Rerum incidunt sequi blanditiis itaque consequuntur ullam vero nihil ab optio qui?</p>
+                <div class="rating">
+                    <span class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </span>
+                    <span class="rating-value">5.0</span>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <img src="https://cdn-image.hipwee.com/wp-content/uploads/2016/05/hipwee-Di-balik-layar-sang-pemimpi.png" alt="Film 2">
+                <h3>Sang Pemimpi</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis eligendi autem quasi hic eos laudantium quam voluptate optio! Rerum incidunt sequi blanditiis itaque consequuntur ullam vero nihil ab optio qui?</p>
+                <div class="rating">
+                    <span class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </span>
+                    <span class="rating-value">5.0</span>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <img src="https://assets.jalantikus.com/assets/cache/0/0/userfiles/2020/09/15/poster-film-keren-5e32f.jpg" alt="Film 2">
+                <h3>Dignitate</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis eligendi autem quasi hic eos laudantium quam voluptate optio! Rerum incidunt sequi blanditiis itaque consequuntur ullam vero nihil ab optio qui?</p>
+                <div class="rating">
+                    <span class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </span>
+                    <span class="rating-value">5.0</span>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <img src="https://assets.kompasiana.com/items/album/2022/12/08/maxresdefault-63916895200582195c301af5.jpg?t=o&v=400" alt="Film 2">
+                <h3>Jo, Sahabat Sejati</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis eligendi autem quasi hic eos laudantium quam voluptate optio! Rerum incidunt sequi blanditiis itaque consequuntur ullam vero nihil ab optio qui?</p>
+                <div class="rating">
+                    <span class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </span>
+                    <span class="rating-value">5.0</span>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <img src="https://assets.kompasiana.com/items/album/2022/12/08/maxresdefault-63916895200582195c301af5.jpg?t=o&v=400" alt="Film 2">
+                <h3>Jo, Sahabat Sejati</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis eligendi autem quasi hic eos laudantium quam voluptate optio! Rerum incidunt sequi blanditiis itaque consequuntur ullam vero nihil ab optio qui?</p>
+                <div class="rating">
+                    <span class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </span>
+                    <span class="rating-value">5.0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+  
+</body>
+</html>

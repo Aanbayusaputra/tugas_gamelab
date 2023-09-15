@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rumah Sakit - Manajemen Pasien</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    background-image: url('https://rsudkartini.jepara.go.id/wp-content/uploads/sites/85/2018/10/HD1.jpg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  form {
+    display: grid;
+    gap: 10px;
+    max-width: 400px;
+    margin-top: 20px;
+    margin-left: 20px; 
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+  }
+   td {
+    border: 1px solid;
+    padding: 8px;
+    text-align: left;
+    background-color: white;
+  }
+
+  th{
+    border: 1px solid ;
+    padding: 8px;
+    text-align: left;
+    background-color: yellow;
+  }
+  #clearAllButton {
+    float: right;
+    margin: 10px;
+    background-color: red;
+    color: white;
+  }
+  #backButton {
+    float: right;
+    margin: 10px;
+    display: none;
+  }
+</style>
+</head>
+<body>
+  <h1> Rumah Sakit Gamelab Indonesia</h1>
+  <br>
+
+  <h2>Form Data Pasien</h2>
+  <form id="patientForm">
+    <label for="id">No Id:</label>
+    <input type="text" id="id" name="id">
+    <label for="name">Nama Pasien:</label>
+    <input type="text" id="name" name="name">
+    <label for="address">Alamat:</label>
+    <input type="text" id="address" name="address">
+    <label for="disease">Penyakit:</label>
+    <input type="text" id="disease" name="disease">
+    <label for="room">Nomor Ruang:</label>
+    <input type="text" id="room" name="room">
+    <label for="bpjs">BPJS:</label>
+    <select id="bpjs" name="bpjs">
+      <option value="Tidak Menggunakan">Tidak Menggunakan</option>
+      <option value="kelas I">Kelas I</option>
+      <option value="kelas II">Kelas II</option>
+      <option value="kelas III">Kelas III</option>
+    </select>
+    <label for="checkIn">Tanggal Masuk:</label>
+    <input type="date" id="checkIn" name="checkIn">
+    <label for="checkOut">Tanggal Keluar:</label>
+    <input type="date" id="checkOut" name="checkOut">
+    <button type="button" id="addButton" onclick="addPatient()">Tambah Data</button>
+    <button type="button" id="updateButton" onclick="updatePatient()" disabled>Update Data</button>
+    <button type="button" id="searchButton" onclick="searchPatient()">Cari Data Pasien</button>
+    <p style="color: red;" align="center">Cari Data Pasien Berdasarkan Nama</p>
+  </form>
+  
+  <h2>Data Pasien</h2>
+  <button type="button" id="clearAllButton" onclick="clearAllData()">Hapus Semua Data</button>
+  <button type="button" id="backButton" onclick="showAllData()">Kembali</button>
+  <table>
+    <thead>
+      <tr>
+        <th>No Id</th>
+        <th>Nama Pasien</th>
+        <th>Alamat</th>
+        <th>Penyakit</th>
+        <th>Nomor Ruang</th>
+        <th>BPJS</th>
+        <th>Tanggal Masuk</th>
+        <th>Tanggal Keluar</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody id="patientTableBody">
+    </tbody>
+  </table>
+
+  <script>
+    const addButton = document.getElementById("addButton");
+    const updateButton = document.getElementById("updateButton");
+    const searchButton = document.getElementById("searchButton");
+    let isEditing = false;
+    let editingPatientId = "";
+  
+    const patients = [];
+  
+    function renderTable(patientData = patients) {
+      const tableBody = document.getElementById("patientTableBody");
+      tableBody.innerHTML = "";
+  
+      for (const patient of patientData) {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${patient.id}</td>
+          <td>${patient.name}</td>
+          <td>${patient.address}</td>
+          <td>${patient.disease}</td>
+          <td>${patient.room}</td>
+          <td>${patient.bpjs}</td>
+          <td>${patient.checkIn}</td>
+          <td>${patient.checkOut}</td>
+          <td>
+            <button onclick="editPatient('${patient.id}')">Edit</button>
+            <button onclick="confirmDelete('${patient.id}', '${patient.name}')">Hapus</button>
+          </td>
+        `;
+        tableBody.appendChild(row);
+      }
+    }
+  
+    function searchPatient() {
+      const searchQuery = document.getElementById("name").value.toLowerCase();
+      const filteredPatients = patients.filter(patient =>
+        patient.name.toLowerCase().includes(searchQuery)
+      );
+      renderTable(filteredPatients);
+      //untuk menampilkan tomnbol saat klik cari
+      document.getElementById("backButton").style.display = "block";
+    }
+
+    function addPatient() {
+      const id = document.getElementById("id").value;
+      const name = document.getElementById("name").value;
+      const address = document.getElementById("address").value;
+      const disease = document.getElementById("disease").value;
+      const room = document.getElementById("room").value;
+      const bpjs = document.getElementById("bpjs").value;
+      const checkIn = document.getElementById("checkIn").value;
+      const checkOut = document.getElementById("checkOut").value || "";
+
+      const patient = {
+        id,
+        name,
+        address,
+        disease,
+        room,
+        bpjs,
+        checkIn,
+        checkOut
+      };
+
+      patients.push(patient);
+      renderTable();
+      clearForm();
+    }
+
+    function editPatient(id) {
+      const patient = patients.find(patient => patient.id === id);
+      if (patient) {
+        document.getElementById("id").value = patient.id;
+        document.getElementById("name").value = patient.name;
+        document.getElementById("address").value = patient.address;
+        document.getElementById("disease").value = patient.disease;
+        document.getElementById("room").value = patient.room;
+        document.getElementById("bpjs").value = patient.bpjs;
+        document.getElementById("checkIn").value = patient.checkIn;
+        document.getElementById("checkOut").value = patient.checkOut || "";
+        
+        addButton.disabled = true;
+        updateButton.disabled = false;
+        isEditing = true;
+        editingPatientId = id;
+
+        alert(`Sedang mengedit data pasien "${patient.name}"`);
+      }
+    }
+
+    function updatePatient() {
+      const id = editingPatientId;
+      const name = document.getElementById("name").value;
+      const address = document.getElementById("address").value;
+      const disease = document.getElementById("disease").value;
+      const room = document.getElementById("room").value;
+      const bpjs = document.getElementById("bpjs").value;
+      const checkIn = document.getElementById("checkIn").value;
+      const checkOut = document.getElementById("checkOut").value || "";
+
+      const patientIndex = patients.findIndex(patient => patient.id === id);
+      if (patientIndex !== -1) {
+        patients[patientIndex] = {
+          id,
+          name,
+          address,
+          disease,
+          room,
+          bpjs,
+          checkIn,
+          checkOut
+        };
+        renderTable();
+        clearForm();
+
+        addButton.disabled = false;
+        updateButton.disabled = true;
+        isEditing = false;
+        editingPatientId = "";
+
+        alert(`Data pasien "${name}" berhasil diperbarui`);
+      }
+    }
+
+    function confirmDelete(id, name) {
+      const isConfirmed = confirm(`Apakah Anda yakin ingin menghapus data pasien "${name}"?`);
+      if (isConfirmed) {
+        deletePatient(id);
+      }
+    }
+
+    function deletePatient(id) {
+      const index = patients.findIndex(patient => patient.id === id);
+      if (index !== -1) {
+        const deletedName = patients[index].name;
+        patients.splice(index, 1);
+        renderTable();
+        alert(`Data pasien "${deletedName}" berhasil dihapus`);
+      }
+    }
+
+    function clearAllData() {
+      const isConfirmed = confirm("Apakah Anda yakin ingin menghapus semua data pasien?");
+      if (isConfirmed) {
+        patients.length = 0;
+        renderTable();
+        alert("Semua data pasien berhasil dihapus");
+      }
+    }
+
+    function clearForm() {
+      document.getElementById("id").value = "";
+      document.getElementById("name").value = "";
+      document.getElementById("address").value = "";
+      document.getElementById("disease").value = "";
+      document.getElementById("room").value = "";
+      document.getElementById("bpjs").value = "Tidak Menggunakan";
+      document.getElementById("checkIn").value = "";
+      document.getElementById("checkOut").value = "";
+    }
+    
+    function showAllData() {
+      renderTable();
+      //untuk menhilankn tombol kmbli
+      document.getElementById("backButton").style.display = "none";
+    }
+  </script>
+</body>
+</html>

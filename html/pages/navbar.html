@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #57a5e4;
+  }
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #57a5e4;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    
+  }
+  .logo img {
+    width: 100px; /* Adjust the width as needed */
+  }
+  .menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+  .menu-item {
+    margin-right: 20px;
+    color: white; /* Set the menu item color to white */
+    text-decoration: none; /* Remove default underline */
+  }
+  .search-box {
+    display: flex;
+    align-items: center;
+  }
+  .search-input {
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+  }
+  .container {
+    padding: 80px 20px; 
+    margin: 20px;
+  }
+  .playlist {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .playlist-item {
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+  }
+  .playlist-item img {
+    max-width: 100%;
+    height: auto;
+  }
+  li a{
+  background-color: #57a5e4;
+    color: white;
+  }
+  li a:hover{
+    background-color: aqua;
+    color: aliceblue;
+  }
+  li a:active{
+    background-color: rgb(3, 212, 7);
+    color: rgb(199, 241, 9);
+  }
+
+  canvas {
+    display: block;
+    margin: auto;
+    border: 1px solid #dd0505;
+    background-color: aqua;
+  }
+
+</style>
+<title>Halaman Perusahaan</title>
+</head>
+<body>
+  <div class="navbar">
+    <div class="logo">
+      <img src="https://www.gamelab.id/img/logo-gamelab/hi-res/Logo_GameLab_Landscape4.png?v=3.10?v=3.10?v=3.1" alt="Gamelab Indonesia">
+    </div>
+    <ul class="menu">
+      <li class="menu-item"><a href="#">Home</a></li>
+      <li class="menu-item"><a href="#">Video</a></li>
+      <li class="menu-item"><a href="#">Gambar</a></li>
+      <li class="menu-item"><a href="#">Canvas</a></li>
+      <li class="menu-item"><a href="#">Tentang</a></li>
+      <li class="menu-item"><a href="#">Komunitas</a></li>
+      <li class="menu-item"><a href="#">Dashboard</a></li>
+      <li class="menu-item search-box">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </li>
+    </ul>
+  </div>
+  <div class="container">
+    <h2>Daftar Playlist Video</h2>
+    <div class="playlist">
+      <div class="playlist-item">
+        <img src="video-thumbnail-1.jpg" alt="Video 1">
+        <h3>Video 1</h3>
+      </div>
+      <div class="playlist-item">
+        <img src="video-thumbnail-2.jpg" alt="Video 2">
+        <h3>Video 2</h3>
+      </div>
+      <div class="playlist-item">
+        <img src="video-thumbnail-2.jpg" alt="Video 2">
+        <h3>Video 2</h3>
+      </div>
+
+      <div class="playlist-item">
+        <img src="video-thumbnail-2.jpg" alt="Video 2">
+        <h3>Video 2</h3>
+      </div>
+
+      <div class="playlist-item">
+        <img src="video-thumbnail-2.jpg" alt="Video 2">
+        <h3>Video 2</h3>
+      </div>
+
+      <div class="playlist-item">
+        <img src="video-thumbnail-2.jpg" alt="Video 2">
+        <h3>Video 2</h3>
+      </div>
+
+      <div class="playlist-item">
+        <img src="video-thumbnail-2.jpg" alt="Video 2">
+        <h3>Video 2</h3>
+      </div>
+
+      <div class="playlist-item">
+        <img src="video-thumbnail-2.jpg" alt="Video 2">
+        <h3>Video 2</h3>
+      </div>
+      <div class="playlist-item">
+        <img src="video-thumbnail-2.jpg" alt="Video 2">
+        <h3>Video 2</h3>
+      </div>
+
+    </div>
+
+    <h2>Gambar-Gambar Terbaru</h2>
+    <div class="playlist">
+      <div class="playlist-item">
+        <img src="gambar-terbaru-1.jpg" alt="Gambar 1">
+      </div>
+      <div class="playlist-item">
+        <img src="gambar-terbaru-2.jpg" alt="Gambar 2">
+      </div>
+      <!-- Tambahkan lebih banyak gambar di sini -->
+    </div>
+
+    <h2>Canvas Keren</h2>
+     <canvas id="myCanvas" width="400" height="200"></canvas>
+  </div>
+  
+  <script>
+    const canvas = document.getElementById("myCanvas");
+    const context = canvas.getContext("2d");
+
+    let x = canvas.width / 2;
+    let y = canvas.height - 30;
+    let dx = 2;
+    let dy = -2;
+
+    function drawBall() {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.beginPath();
+      context.arc(x, y, 10, 0, Math.PI * 2);
+      context.fillStyle = "#0095DD";
+      context.fill();
+      context.closePath();
+
+      x += dx;
+      y += dy;
+
+      if (x + dx > canvas.width - 10 || x + dx < 10) {
+        dx = -dx;
+      }
+      if (y + dy > canvas.height - 10 || y + dy < 10) {
+        dy = -dy;
+      }
+
+      requestAnimationFrame(drawBall);
+    }
+
+    drawBall();
+  </script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: linear-gradient(to bottom, #092b5e, #2d84c3);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .display-4 {
+            font-size: 2.5rem;
+        }
+
+        .fw-bold {
+            font-weight: bold;
+        }
+
+        .fw-light {
+            font-weight: lighter;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            flex: 1;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-success {
+            background-color: #0d18f1;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .list-group {
+            list-style: none;
+            padding: 0;
+        }
+
+        .list-group-item {
+            border: none;
+            border-top: 1px solid #dee2e6;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .list-group-item button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .form-check-input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        h1, h2{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card text-center">
+            <div class="card-body">
+                <h1 class="display-4 fw-bold">Todo List </h1>
+                <h2 class="fw-light">Silahkan buat list Harian Kamu!</h2>
+                <form id="todo-form">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="input-user" autofocus autocomplete="off" placeholder="isi list disini">
+                        <button class="btn btn-success" type="submit">Tambahkan</button>
+                    </div>
+                </form>
+                <ul class="list-group text-dark" id="list-group">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const todoForm = document.getElementById("todo-form");
+        const inputUser = document.getElementById("input-user");
+        const listGroup = document.getElementById("list-group");
+
+        // Event listener for form submission
+        todoForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const task = inputUser.value;
+            if (task) {
+                addTask(task);
+                inputUser.value = "";
+            }
+        });
+
+        // menambhakan task
+        function addTask(task) {
+            const taskItem = document.createElement("li");
+            taskItem.classList.add("list-group-item");
+            taskItem.innerHTML = `
+                <span>${task}</span>
+                <button class="btn-delete" type="button">X</button>
+            `;
+            listGroup.appendChild(taskItem);
+
+            // menimpan task ke locastorage
+
+            saveTasksToLocalStorage();
+        }
+
+         // menghapus list
+         function deleteTask(taskItem) {
+            if (confirm("Apakah Anda yakin ingin menghapus tugas ini?")) {
+                listGroup.removeChild(taskItem);
+         // menimpan task ke locastorage
+                saveTasksToLocalStorage();
+            }
+        }
+
+        // fungsi untuk memuat tugas dari local storage
+        function loadTasksFromLocalStorage() {
+            const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+            tasks.forEach(function (task) {
+                addTask(task);
+            });
+        }
+
+        // fungsi untuk  menyimpan ke local storage
+        function saveTasksToLocalStorage() {
+            const tasks = Array.from(listGroup.children).map(function (taskItem) {
+                return taskItem.querySelector("span").textContent;
+            });
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+        }
+
+      
+        document.addEventListener("DOMContentLoaded", function () {
+            loadTasksFromLocalStorage();
+
+            // Event untuk penghapusan tugas
+            listGroup.addEventListener("click", function (event) {
+                if (event.target.classList.contains("btn-delete")) {
+                    const taskItem = event.target.parentElement;
+                    deleteTask(taskItem);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
